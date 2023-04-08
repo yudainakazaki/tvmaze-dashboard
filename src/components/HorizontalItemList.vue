@@ -16,12 +16,27 @@ defineEmits(['click']);
 </script>
 
 <template>
-    <div class="showList">
+    <div v-if="isSearchPage" class="showList">
+        <div class='showList__search-list'>
+            <InfoCard 
+                v-bind="show" 
+                v-for="(show, index) in items" 
+                :isLast="index === 9"
+                @click="$emit('click', show.id)"
+            />
+        </div>
+    </div>
+    <div v-else class="showList">
         <div v-if="title" class="showList__title">
             <h2>{{ title }}</h2>
         </div>
-        <div :class="isSearchPage ? 'showList__list--search' : 'showList__list'">
-            <InfoCard v-bind="show" v-for="(show, _) in items" @click="$emit('click', show.id)"/>
+        <div class='showList__list'>
+            <InfoCard 
+                v-bind="show" 
+                v-for="(show, index) in items" 
+                :isLast="index === 9"
+                @click="$emit('click', show.id)"
+            />
         </div>
     </div>
 </template>
@@ -30,6 +45,7 @@ defineEmits(['click']);
 .showList {
     display: flex;
     flex-direction: column;
+    justify-content: center;
     margin: 0;
 
     &__title {
@@ -40,17 +56,24 @@ defineEmits(['click']);
         }
     }
 
+    &__search-list {
+        display: flex;
+        justify-content: left;
+        margin: auto;
+        flex-wrap: wrap;        
+        row-gap: $spacing-5;
+        flex-flow: row wrap;
+    }
+
+    &__search-list::after {
+        content: '';
+        flex: auto;
+    }
+
     &__list {
         display: flex;
         justify-content: left;
-        //width: 100%;
         overflow-x: scroll;
-        
-        &--search {
-            display: flex;
-            justify-content: left;
-            flex-wrap: wrap;
-        }
     }
 }
 
