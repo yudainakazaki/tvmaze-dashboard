@@ -3,19 +3,20 @@ import Rating from '@/components/Rating.vue';
 import ItemArray from '@/components/ItemArray.vue';
 import noImage from '@/assets/image/no-image.svg' 
 
-const props = defineProps<{
+defineProps<{
     id?: number,
     name?: string,
     genres?: string[],
     rating?: number,
     image?: string,
     siteUrl?: string,
+    isLast?: boolean,
 }>();
 
 </script>
 
 <template>
-    <div class="card border-radius" :title="name">
+    <div class="border-radius card" :class="{'card--last' : isLast}" :title="name">
         <div class="card__img border-radius">
             <img class="card__img__img" :src="image || noImage" alt="name">
         </div>
@@ -32,8 +33,13 @@ const props = defineProps<{
     flex-direction: column;
     width: $width-3;
     height: fit-content;
-    margin: $spacing-3;
+    margin-left: $spacing-4;
     cursor: pointer;
+
+    &--last {
+        margin: 0 $spacing-4;
+        //margin-right: auto;
+    }
     
     &__img {
         height: $width-5;

@@ -34,6 +34,7 @@ onMounted(async () => {
 <style lang="scss" scoped>
 .search-bar {
     margin: 0 $spacing-10;
+    width: 25%;
     display: flex;
     align-items: center;
     border: solid 1px $color-main;
@@ -54,7 +55,9 @@ onMounted(async () => {
 }
 
 @media (max-width: 976px) {
-    
+    .search-bar {
+        width: fit-content;
+    }
 }
 
 </style>
