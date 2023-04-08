@@ -38,7 +38,7 @@ const fetchShowData = async () => {
     var page = 0;
 
     while(page <= 10){ 
-      const { data } = await axios.get(`http://api.tvmaze.com/shows?page=${page}`);
+      const { data } = await axios.get(`https://api.tvmaze.com/shows?page=${page}`);
       shows = shows.concat(data);
       page++;
     }
