@@ -21,7 +21,7 @@ onMounted(() => {
 
 <template>
     <header class="header">
-        <a href="/" class="flex">
+        <a href="/browse" class="flex">
             <img src="../assets/image/tv.png" alt="logo" class="header__logo">
             <h1 v-if="!isMobile" class="header__title">TVMAZE Dashboard</h1>
         </a>
