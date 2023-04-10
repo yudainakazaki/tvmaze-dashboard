@@ -23,7 +23,7 @@ onMounted(() => {
 
 <template>
     <header class="header">
-        <a :href="`${baseUrl}browse`" class="flex">
+        <a :href="`${baseUrl}browse`" class="flex items-center">
             <img src="../assets/image/tv.png" alt="logo" class="header__logo">
             <h1 v-if="!isMobile" class="header__title">TVMAZE Dashboard</h1>
         </a>
@@ -54,8 +54,16 @@ onMounted(() => {
     }
 
     &__logo {
-        height: $spacing-12;
+        height: $spacing-8;
         margin-left: $spacing-6;
+    }
+}
+
+@media (max-width: 976px) {
+    .header {
+        &__logo {
+            height: $spacing-12;
+        }
     }
 }
 </style>

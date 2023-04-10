@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import Spinner from '@/components/Spinner.vue';
-import HorizontalItemList from '@/components/HorizontalItemList.vue'
+import HorizontalItemList from '@/components/HorizontalItemList.vue';
+import NoData from '@/components/NoData.vue';
 import axios from 'axios';
 import { onMounted, ref, watch } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
@@ -60,7 +61,8 @@ onMounted(() => {
   <div>
     <Spinner v-if="loading"/>
     <div v-else class="list-container">
-        <HorizontalItemList :items="showData" @click="handleClick" :is-search-page="true"></HorizontalItemList>
+        <HorizontalItemList v-if="showData?.length !== 0" :items="showData" @click="handleClick" :is-search-page="true"></HorizontalItemList>
+        <NoData v-else />
     </div>
   </div>
 </template>
