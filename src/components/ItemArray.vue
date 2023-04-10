@@ -5,7 +5,7 @@ defineProps<{
 </script>
 <template>
     <div v-if="items" class="genres">
-        <span v-for="(genre, i) in items" class="genres__genre">
+        <span v-for="(genre, i) in items" :class="`genres__genre genres__genre--${i}`" >
             {{ genre }}
             <span v-if="i != items.length-1" class="genres__genre__separator">|</span>
         </span>

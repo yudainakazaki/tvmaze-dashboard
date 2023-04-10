@@ -24,7 +24,7 @@ onMounted(() => {
 <template>
     <header class="header">
         <a :href="`${baseUrl}browse`" class="flex items-center">
-            <img src="../assets/image/tv.png" alt="logo" class="header__logo">
+            <img src="../assets/image/tv.png" alt="logo" class="header__logo" name="header-logo">
             <h1 v-if="!isMobile" class="header__title">TVMAZE Dashboard</h1>
         </a>
         <SearchBar />

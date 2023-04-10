@@ -1,5 +1,5 @@
 <template>
-    <div class="no-data">
+    <div class="no-data flex-col items-center">
         <span class="bx bx-tv no-data__icon" />
         <span class="no-data__text">No data found</span>
     </div>
@@ -7,10 +7,6 @@
 
 <style lang="scss" scoped>
 .no-data {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
     position: absolute;
     top: 50%;
     left: 50%; 

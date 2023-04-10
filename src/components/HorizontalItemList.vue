@@ -1,9 +1,6 @@
 <script lang="ts" setup>
-import InfoCard from '@/components/InfoCard/InfoCard.vue';
+import InfoCard from '@/components/InfoCard.vue';
 import type { ShowData } from '@/types/type';
-import { ref } from 'vue';
-
-const isMobile = ref(window.innerWidth <= 976);
 
 defineProps<{
     title?: string;
@@ -16,8 +13,8 @@ defineEmits(['click']);
 </script>
 
 <template>
-    <div v-if="isSearchPage" class="showList">
-        <div class='showList__search-list'>
+    <div v-if="isSearchPage" class="show-list flex-col">
+        <div class='show-list__search-list'>
             <InfoCard 
                 v-bind="show" 
                 v-for="(show, index) in items" 
@@ -26,11 +23,11 @@ defineEmits(['click']);
             />
         </div>
     </div>
-    <div v-else class="showList">
-        <div v-if="title" class="showList__title">
+    <div v-else class="show-list flex-col">
+        <div v-if="title" class="show-list__title">
             <h2>{{ title }}</h2>
         </div>
-        <div class='showList__list'>
+        <div class='show-list__list'>
             <InfoCard 
                 v-bind="show" 
                 v-for="(show, index) in items" 
@@ -42,9 +39,7 @@ defineEmits(['click']);
 </template>
 
 <style lang="scss" scoped>
-.showList {
-    display: flex;
-    flex-direction: column;
+.show-list {
     justify-content: center;
     margin: 0;
 
@@ -77,9 +72,7 @@ defineEmits(['click']);
 }
 
 @media (max-width: 976px) {
-    .showList {
-        display: flex;
-        flex-direction: column;
+    .show-list {
         margin: 0;
 
         &__title {
@@ -93,14 +86,7 @@ defineEmits(['click']);
         &__list {
             display: flex;
             justify-content: left;
-            flex-wrap: nowrap;
             overflow-x: scroll;
-            
-            &--search {
-                display: flex;
-                justify-content: center;
-                flex-wrap: wrap;
-            }
         }
     }
 }
