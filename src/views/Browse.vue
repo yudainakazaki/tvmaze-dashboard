@@ -74,7 +74,7 @@ onMounted(() => {
 <template>
   <div>
     <Spinner v-if="loading"/>
-    <div v-else class="list-container">
+    <div v-else class="flex-col">
       <HorizontalItemList title='Top rated TV shows' :items="top10?.get('general')" @click="handleClick" />
       <div v-for="(genre, _) in genres" class="showList">
         <HorizontalItemList :title='genre' :items="top10?.get(genre)" @click="handleClick" />
@@ -82,10 +82,3 @@ onMounted(() => {
     </div>
   </div>
 </template>
-
-<style lang="scss" scoped>
-.list-container {
-  display: flex;
-  flex-direction: column;
-}
-</style>

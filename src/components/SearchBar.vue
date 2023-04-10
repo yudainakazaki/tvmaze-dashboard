@@ -26,7 +26,7 @@ onMounted(async () => {
 
 <template>
     <div class="search-bar">
-        <span class="bx bx-search search-bar__logo"></span>
+        <span class="bx bx-search search-bar__logo" />
         <input type="text" v-model="inputQuery" placeholder="Titles" class="search-bar__box">
     </div>
 </template>
@@ -47,6 +47,7 @@ onMounted(async () => {
     &__box {
         margin-left: $spacing-1;
         border: none;
+        width: 100%;
 
         &:focus {
             outline: none;
