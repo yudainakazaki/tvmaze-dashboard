@@ -59,7 +59,6 @@ defineEmits(['click']);
     &__search-list {
         display: flex;
         justify-content: left;
-        margin: auto;
         flex-wrap: wrap;        
         row-gap: $spacing-5;
         flex-flow: row wrap;
