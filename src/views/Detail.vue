@@ -1,16 +1,16 @@
 <script lang="ts" setup>
 import axios from 'axios';
 import { onMounted, ref } from 'vue';
-import { useRoute } from 'vue-router';
 import Spinner from '@/components/Spinner.vue';
 import UrlBtn from '@/components/UrlBtn.vue';
 import ItemArray from '@/components/ItemArray.vue';
 import Rating from '@/components/Rating.vue';
 import noImage from '@/assets/image/no-image.svg' 
+import { useRouterStore } from '@/stores/router';
 
-const route = useRoute();
 const showDetail = ref();
 const loading = ref(true);
+const routerStore = useRouterStore();
 
 const handleData = (data?: any) => {
     return {
@@ -36,7 +36,7 @@ const handleData = (data?: any) => {
 
 const fetchShowDetail = async () => {
     try {
-        const { data } = await axios.get(`https://api.tvmaze.com/shows/${route.params.id}`);
+        const { data } = await axios.get(`https://api.tvmaze.com/shows/${routerStore.getShowId}`);
         if(data)
             showDetail.value = handleData(data);
     

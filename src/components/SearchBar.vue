@@ -1,33 +1,43 @@
 <script setup lang='ts'>
 import { ref, watch, onMounted } from 'vue';
-import { useRoute, useRouter } from 'vue-router';
+import { useSearchStore } from '@/stores/search';
+import { useRouterStore } from '@/stores/router';
 
-const route = useRoute();
-const router = useRouter();
-
-const inputQuery = ref<string | undefined>('');
+const searchStore = useSearchStore();
+const routerStore = useRouterStore();
+const searchQuery = ref();
 
 watch(
-    () => inputQuery.value,
+    () => searchQuery.value,
     () => {
-        if(inputQuery.value !== '')
-            router.push({name: 'search', query: { q: inputQuery.value }})
-        else
-            router.push({path: '/'})
+        if(!searchQuery.value){
+            if(routerStore.getParam !== 'detail') routerStore.pushBase()
+        } else {
+            routerStore.updateQuery(searchQuery.value);
+            routerStore.pushSearch();
+            searchStore.fetchShows();
+        }
     }
 )
 
-onMounted(async () => {
-    await router.isReady();
-    inputQuery.value = route.query.q === undefined ? '' : route.query.q?.toLocaleString();
-})
+watch(
+    () => routerStore.getQuery,
+    () => searchQuery.value = routerStore.getQuery
+)
+
+onMounted(
+    async () => {
+        await routerStore.router.isReady();
+        searchQuery.value = routerStore.getQuery === undefined ? '' : routerStore.getQuery?.toLocaleString();
+    }
+)
 
 </script>
 
 <template>
     <div class="search-bar">
         <span class="bx bx-search search-bar__logo" />
-        <input type="text" v-model="inputQuery" placeholder="Titles" class="search-bar__box">
+        <input type="text" v-model="searchQuery" placeholder="Titles" class="search-bar__box">
     </div>
 </template>
 
