@@ -1,0 +1,1 @@
+export const genres = ['Drama','Science-Fiction','Action','Horror','Romance','Mystery','Fantasy','Anime','Comedy','Sports']
