@@ -1,6 +1,7 @@
 # tvmaze-dashboard
 
 TVMAZE Dashboard is an application which provides information about TV shows from the API endpoints of [TVMAZR](https://www.tvmaze.com/api).
+
 The deployed application is available [here](https://yudainakazaki.github.io/tvmaze-dashboard/browse).
 
 ## Recommended IDE Setup
